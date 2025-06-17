@@ -1,6 +1,8 @@
 import {WebSocketServer, WebSocket} from "ws"
+import 'dotenv/config'
 
-const wss = new WebSocketServer({port:2390});
+//@ts-ignore
+const wss = new WebSocketServer({port:process.env.PORT||undefined});
 
 let userCount = 0;
 interface User {
