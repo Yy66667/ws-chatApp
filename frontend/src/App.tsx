@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css'; // Ensure this includes Tailwind base/components/utilities
-import 'dotenv/config'
 
-console.log(process.env)
+console.log("started")
+console.log(import.meta.env.VITE_wsURL)
+
 
 function App() {
   const [messages, setMessages] = useState<
@@ -43,7 +44,7 @@ function App() {
   },[]);
   
   useEffect(() => {
-    const ws = new WebSocket(process.env.wsURL||"");
+    const ws = new WebSocket(import.meta.env.VITE_wsURL||"");
     wsRef.current = ws;
     ws.onmessage = (event) => {
       console.log(event.data)
